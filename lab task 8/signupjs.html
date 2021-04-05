@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SignUp</title>
+<script>  
+		function validateform(){  
+		var name=document.myform.name.value;  
+		var password=document.myform.password.value;  
+		  
+		if (name==null || name==""){  
+		  alert("Name can't be blank");  
+		  return false;  
+		}else if(password.length<6){  
+		  alert("Password must be at least 6 characters long.");  
+		  return false;  
+		  }  
+		}
+		function checkEmpty() {
+		  	if (document.myform.name.value = "") {
+		  		alert("Name can't be blank");
+		        return false;  
+		  	}
+		  }  
+		function checkName() {
+			if (document.getElementById("name").value == "") {
+			  	document.getElementById("nameErr").innerHTML = "Name can't be blank";
+			  	document.getElementById("nameErr").style.color = "red";
+			  	document.getElementById("name").style.borderColor = "red";
+			}else{
+			  	document.getElementById("nameErr").innerHTML = "";
+				document.getElementById("name").style.borderColor = "black";
+			}
+			
+        }
+        function checkPass(){
+        	if (document.getElementById("password").value == "") {
+			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("passErr").style.color = "red";
+			  	document.getElementById("password").style.borderColor = "red";
+			}else if(document.getElementById("password").value.length<6){
+			  	document.getElementById("password").style.borderColor = "red";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("passErr").innerHTML = "Password must be at least 6 characters long.";
+			}
+			else{
+				document.getElementById("passErr").innerHTML = "";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("password").style.borderColor = "black";
+			}
+        }
+        function myFunction() {
+  var txt = "";
+  if (document.getElementById("id1").validity.rangeOverflow) {
+    txt = "Value too large";
+  } else {
+    txt = "Input OK";
+  } 
+  document.getElementById("demo").innerHTML = txt;
+}
+
+
+</script>
+
+</head>
+<body  style="background-color:powderblue;">
+
+	<form name="myform" method="post" action="" onsubmit="validateform()" >
+		<fieldset>
+			<legend>SignUp</legend>
+			<table>
+				<tr>
+
+					<td>Userid</td>
+					<td><input id="id1" type="number" max="100">
+<button onclick="myFunction()">Ok</button></td>
+
+<p>If the user id is greater than 100 (the input's max attribute), an error message will be displayed.</p>
+
+<p id="demo"></p>
+				</tr>
+				<tr>
+					<td>Username</td>
+					<td><input type="text" name="name" id="name" onkeyup="checkName()" onblur="checkName()">
+<span id="nameErr"></span>
+<br/>  </td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" id="password" name="password" onkeyup="checkPass()" onblur="checkPass()">
+<span id="passErr"></span>
+<br/>  </td>
+				</tr>
+				<tr>
+					
+					<td>Email</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Submit"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

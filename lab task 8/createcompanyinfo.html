@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add company info</title>
+<script>  
+		function validateform(){  
+		var name=document.myform.name.value;  
+		var profile_description=document.myform.profile_description.value; 
+		var password=document.myform.password.value;  
+		  
+		if (name==null || name==""){  
+		  alert("Name can't be blank");  
+		  return false;  
+		}else if(password.length<6){  
+		  alert("Password must be at least 6 characters long.");  
+		  return false;  
+		  }  
+		  else if(profile_description==null || profile_description==""){  
+		  alert("profile_description can't be blank");  
+		  return false; 
+		}
+		function checkEmpty() {
+		  	if (document.myform.name.value = "") {
+		  		alert("Name can't be blank");
+		        return false;  
+		  	}
+		  	else if (document.myform.profile_description.value = "") {
+		  		alert("profile_description can't be blank");
+		        return false;  
+		  	}
+		  }  
+		function checkName() {
+			if (document.getElementById("name").value == "") {
+			  	document.getElementById("nameErr").innerHTML = "Name can't be blank";
+			  	document.getElementById("nameErr").style.color = "red";
+			  	document.getElementById("name").style.borderColor = "red";
+			}else{
+			  	document.getElementById("nameErr").innerHTML = "";
+				document.getElementById("name").style.borderColor = "black";
+			}
+			
+        }
+        function checkprofile_description() {
+			if (document.getElementById("profile_description").value == "") {
+			  	document.getElementById("profile_descriptionErr").innerHTML = "profile_description can't be blank";
+			  	document.getElementById("profile_descriptionErr").style.color = "red";
+			  	document.getElementById("profile_description").style.borderColor = "red";
+			}else{
+			  	document.getElementById("profile_descriptionErr").innerHTML = "";
+				document.getElementById("profile_description").style.borderColor = "black";
+			}
+			
+        }
+        function checkPass(){
+        	if (document.getElementById("password").value == "") {
+			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("passErr").style.color = "red";
+			  	document.getElementById("password").style.borderColor = "red";
+			}else if(document.getElementById("password").value.length<6){
+			  	document.getElementById("password").style.borderColor = "red";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("passErr").innerHTML = "Password must be at least 6 characters long.";
+			}
+			else{
+				document.getElementById("passErr").innerHTML = "";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("password").style.borderColor = "black";
+			}
+        }
+        function myFunction() {
+  var txt = "";
+  if (document.getElementById("id1").validity.rangeOverflow) {
+    txt = "Value too large";
+  } else {
+    txt = "Input OK";
+  } 
+  document.getElementById("demo").innerHTML = txt;
+}
+
+
+</script>
+
+
+</head>
+<body  style="background-color:powderblue;">
+
+	<form name="myform" method="post" action="" onsubmit="validateform()">
+		<fieldset>
+			<legend>Create New Company Info</legend>
+			<table>
+				<tr>
+					<td>Company id</td>
+					<td><input type="text" name="id"></td>
+				</tr>
+				<tr>
+					<td>Company name</td>
+					<td><input type="text" name="name" id="name" onkeyup="checkName()" onblur="checkName()">
+<span id="nameErr"></span></td>
+				</tr>
+				<tr>
+					<td>Profile description</td>
+					<td><input type="text" name="profile_description" id="profile_description" onkeyup="checkprofile_description()" onblur="checkprofile_description()">
+<span id="profile_descriptionErr"></td>
+				</tr>
+				<tr>
+					<td>Industry</td>
+					<td><input type="text" name="industry"></td>
+				</tr>
+				<tr>
+					<td>Company website</td>
+					<td><input type="text" name="company_website"></td>
+				</tr>
+				<tr>
+					<td>Company logo</td>
+					<td><input type="file" name="company_logo"></td>
+				</tr>
+				<tr>
+					<td>User account id</td>
+					<td><input id="id1" type="number" max="100">
+<button onclick="myFunction()">Ok</button></td>
+
+<p>If the user id is greater than 100 (the input's max attribute), an error message will be displayed.</p>
+
+<p id="demo"></p>
+</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="submit" name="submit" value="Submit"> 
+						
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

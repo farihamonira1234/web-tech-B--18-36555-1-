@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>  
+		function validateform(){  
+		var name=document.myform.name.value;  
+		var password=document.myform.password.value;  
+		  
+		if (name==null || name==""){  
+		  alert("Name can't be blank");  
+		  return false;  
+		}else if(password.length<6){  
+		  alert("Password must be at least 6 characters long.");  
+		  return false;  
+		  }  
+		}
+		function checkEmpty() {
+		  	if (document.myform.name.value = "") {
+		  		alert("Name can't be blank");
+		        return false;  
+		  	}
+		  }  
+		function checkName() {
+			if (document.getElementById("name").value == "") {
+			  	document.getElementById("nameErr").innerHTML = "Name can't be blank";
+			  	document.getElementById("nameErr").style.color = "red";
+			  	document.getElementById("name").style.borderColor = "red";
+			}else{
+			  	document.getElementById("nameErr").innerHTML = "";
+				document.getElementById("name").style.borderColor = "black";
+			}
+			
+        }
+        function checkPass(){
+        	if (document.getElementById("password").value == "") {
+			  	document.getElementById("passErr").innerHTML = "Password can't be blank";
+			  	document.getElementById("passErr").style.color = "red";
+			  	document.getElementById("password").style.borderColor = "red";
+			}else if(document.getElementById("password").value.length<6){
+			  	document.getElementById("password").style.borderColor = "red";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("passErr").innerHTML = "Password must be at least 6 characters long.";
+			}
+			else{
+				document.getElementById("passErr").innerHTML = "";
+			  	document.getElementById("passErr").style.color = "red";
+				document.getElementById("password").style.borderColor = "black";
+			}
+        }
+        
+</script> 
+
+</head>
+<body  style="background-color:powderblue;">
+<form name="myform" method="post" action="" onsubmit="validateform()" >  
+ <fieldset>
+			<legend>SignIn</legend>
+			<table>
+				<tr>
+ 	
+ <td> Name:</td>
+ <td> <input type="text" name="name" id="name" onkeyup="checkName()" onblur="checkName()">
+<span id="nameErr"></span></td>
+<br/> 
+</tr>
+<tr>
+<td> Password:</td>
+<td> <input type="password" id="password" name="password" onkeyup="checkPass()" onblur="checkPass()">
+<span id="passErr"></span></td>
+<br/>  
+</tr>
+<tr>
+	<td>Submit</td>
+<td><input type="submit" value="register"></td>
+</tr> 
+</table>
+</fieldset> 
+</form>  
+</body>
+</html>
